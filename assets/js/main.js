@@ -34,10 +34,19 @@
     ==================================*/
     /*
 
-  /*---------- 01. On Load Function ----------*/
+    /*---------- 01. On Load Function ----------*/
+    function revealPage() {
+        if ($('body').hasClass('page-ready')) return;
+        $(".preloader").fadeOut(400);
+        $('body').addClass('page-ready');
+    }
+
     $(window).on("load", function () {
-        $(".preloader").fadeOut();
+        revealPage();
     });
+
+    // Fail-safe: reveal page after 2.5 seconds no matter what
+    setTimeout(revealPage, 2500);
 
     /*---------- 02. Preloader ----------*/
     if ($(".preloader").length > 0) {

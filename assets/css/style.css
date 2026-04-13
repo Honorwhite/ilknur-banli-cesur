@@ -19,24 +19,34 @@ Version: 1.0.0
 .space-bottom, 
 .space-top,
 .footer-wrapper {
-  will-change: opacity, transform;
-  animation: fastPopIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  opacity: 0;
 }
 
-.breadcumb-wrapper + .space { animation-delay: 0.1s; }
-.space + .space { animation-delay: 0.2s; }
-.space + footer, .space-bottom + footer { animation-delay: 0.3s; }
+.page-ready .th-hero-wrapper, 
+.page-ready .breadcumb-wrapper, 
+.page-ready .space, 
+.page-ready .space-bottom, 
+.page-ready .space-top,
+.page-ready .footer-wrapper {
+  will-change: opacity, transform;
+  animation: fastPopIn 0.8s cubic-bezier(0.2, 1, 0.2, 1) forwards;
+}
+
+.page-ready .breadcumb-wrapper + .space { animation-delay: 0.1s; }
+.page-ready .space + .space { animation-delay: 0.2s; }
+.page-ready .space + footer, .page-ready .space-bottom + footer { animation-delay: 0.3s; }
 
 @keyframes fastPopIn {
   from { 
     opacity: 0; 
-    transform: scale(0.98) translateY(10px); 
+    transform: translateY(20px); 
   }
   to { 
     opacity: 1; 
-    transform: scale(1) translateY(0); 
+    transform: translateY(0); 
   }
 }
+
 
 
 
@@ -1504,7 +1514,7 @@ textarea.is-invalid {
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 999;
+  z-index: 999999;
   background-color: var(--white-color);
 }
 

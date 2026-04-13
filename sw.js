@@ -4,7 +4,7 @@ self.addEventListener('install', (event) => {
       return cache.addAll([
         '/',
         '/index.html',
-        '/assets/css/style.css?v=1.0.1',
+        '/assets/css/style.css?v=1.0.2',
         '/assets/js/main.js'
       ]);
     })
