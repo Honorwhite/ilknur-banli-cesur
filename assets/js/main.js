@@ -1032,7 +1032,7 @@
         if (isIOS()) {
             $('#pwa-banner').toggleClass('ios-expanded');
             if ($('#pwa-banner').hasClass('ios-expanded')) {
-                $('.pwa-subtitle').text('Yükleme talimatları aşağıda');
+                $('.pwa-subtitle').text('Yükleme talimatları yukarıda');
             } else {
                 $('.pwa-subtitle').text('Uygulamamızı Yükleyin');
             }
@@ -1064,7 +1064,7 @@
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        
+
         var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         if (isMobile) {
             showPWABanner();
