@@ -21040,4 +21040,200 @@ span.select2-selection.select2-selection--single:focus {
   }
 }
 
-/*# sourceMappingURL=style.css.map */
+
+/*-------------------------------------------------------
+    Modern Language Switcher
+---------------------------------------------------------*/
+.th-language-switcher {
+    position: relative;
+    display: inline-block;
+}
+
+.lang-btn {
+    background: #fff;
+    border: 1px solid var(--th-border-color);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    min-width: 130px;
+}
+
+.lang-btn span {
+    color: #1a1a1a !important;
+}
+
+.lang-btn:hover {
+    border-color: var(--theme-color2);
+    box-shadow: 0 6px 20px rgba(31, 95, 255, 0.1);
+}
+
+.lang-btn i {
+    font-size: 16px;
+    color: var(--theme-color2);
+}
+
+.lang-btn .fa-chevron-down {
+    font-size: 10px;
+    color: var(--gray-color);
+    transition: 0.3s;
+}
+
+.th-language-switcher:hover .lang-btn .fa-chevron-down,
+.th-language-switcher.open .lang-btn .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 12px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    min-width: 180px;
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+}
+
+.th-language-switcher:hover .lang-dropdown,
+.th-language-switcher.open .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.lang-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    color: #1a1a1a !important;
+    font-weight: 500;
+    font-size: 15px;
+    transition: 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+}
+
+.lang-item span {
+    color: #1a1a1a !important;
+}
+
+.lang-item:hover {
+    background: var(--smoke-color);
+    color: var(--theme-color2) !important;
+}
+
+.lang-item:hover span {
+    color: var(--theme-color2) !important;
+}
+
+.lang-item.active {
+    background: rgba(31, 95, 255, 0.05);
+    color: var(--theme-color2) !important;
+}
+
+.lang-item.active span {
+    color: var(--theme-color2) !important;
+}
+
+.flag-icon-tr, .flag-icon-en {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+}
+
+.flag-icon-tr { background-image: url('https://flagicons.lipis.dev/flags/4x3/tr.svg'); }
+.flag-icon-en { background-image: url('https://flagicons.lipis.dev/flags/4x3/gb.svg'); }
+
+.radio-indicator {
+    margin-left: auto;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #D8DDE1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.radio-circle {
+    width: 8px;
+    height: 8px;
+    background: var(--theme-color2);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 0.35s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.lang-item.active .radio-indicator {
+    border-color: var(--theme-color2);
+}
+
+.lang-item.active .radio-circle {
+    transform: scale(1);
+}
+
+/* Mobile responsive */
+@media (max-width: 991px) {
+    .th-language-switcher {
+        display: block;
+        margin-bottom: 10px;
+    }
+    
+    .lang-btn {
+        width: auto;
+        min-width: unset;
+        justify-content: flex-start;
+        padding: 8px 12px;
+    }
+
+    .lang-btn span {
+        display: none; /* Hide 'Dil Seçimi' text on mobile header if too tight */
+    }
+    
+    .header-top .lang-btn span,
+    .th-mobile-menu .lang-btn span {
+        display: inline-block; /* Keep text in top bar and side menu */
+    }
+
+    .lang-dropdown {
+        position: absolute;
+        width: 180px;
+        display: none;
+    }
+
+    .th-mobile-menu .lang-dropdown {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: 100%;
+        box-shadow: none;
+        margin-top: 10px;
+        background: #f8f9fa;
+        border: 1px solid #eee;
+    }
+    
+    .th-language-switcher.open .lang-dropdown {
+        display: block;
+    }
+}
+
+
+/*# sourceMappingURL=style.css.map */
