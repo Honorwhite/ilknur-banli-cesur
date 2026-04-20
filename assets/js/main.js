@@ -1071,15 +1071,48 @@
         }
     });
 
+    // Version control for manual cache busting
+    const APP_VERSION = '1.0.3';
+    if (localStorage.getItem('app_version') !== APP_VERSION) {
+        if ('caches' in window) {
+            caches.keys().then(names => {
+                for (let name of names) caches.delete(name);
+            });
+        }
+        localStorage.setItem('app_version', APP_VERSION);
+    }
+
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('./sw.js').then(reg => {
                 console.log('SW Registered');
+                
+                // Check for updates
+                reg.addEventListener('updatefound', () => {
+                    const newWorker = reg.installing;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            // New version available and installed, it will skipWaiting and activate
+                            // The controllerchange event below will handle the reload
+                            console.log('New version installed, activating...');
+                        }
+                    });
+                });
             }).catch(err => {
                 console.log('SW Registration Failed', err);
             });
         });
+
+        // Refresh the page when the new service worker takes control
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (!refreshing) {
+                refreshing = true;
+                window.location.reload();
+            }
+        });
     }
+
 
 })(jQuery);
 
