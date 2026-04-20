@@ -1072,7 +1072,7 @@
     });
 
     // Version control for manual cache busting
-    const APP_VERSION = '1.0.3';
+    const APP_VERSION = '1.0.4';
     if (localStorage.getItem('app_version') !== APP_VERSION) {
         if ('caches' in window) {
             caches.keys().then(names => {
@@ -1084,16 +1084,26 @@
 
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js').then(reg => {
-                console.log('SW Registered');
+            // Unregister old worker if exists
+            navigator.serviceWorker.getRegistrations().then(registrations => {
+                for (let registration of registrations) {
+                    if (registration.active && registration.active.scriptURL.includes('sw.js')) {
+                        registration.unregister();
+                    }
+                }
+            });
+
+            navigator.serviceWorker.register('./sw-v3.js').then(reg => {
+                console.log('SW-v3 Registered');
                 
+                // Force update check
+                reg.update();
+
                 // Check for updates
                 reg.addEventListener('updatefound', () => {
                     const newWorker = reg.installing;
                     newWorker.addEventListener('statechange', () => {
                         if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                            // New version available and installed, it will skipWaiting and activate
-                            // The controllerchange event below will handle the reload
                             console.log('New version installed, activating...');
                         }
                     });
@@ -1112,6 +1122,7 @@
             }
         });
     }
+
 
 
 })(jQuery);

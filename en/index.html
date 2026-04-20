@@ -18,6 +18,15 @@
         (function () {
             // SW Update Handler
             if ('serviceWorker' in navigator) {
+                // Unregister legacy worker
+                navigator.serviceWorker.getRegistrations().then(regs => {
+                    for (let reg of regs) {
+                        if (reg.active && reg.active.scriptURL.includes('sw.js') && !reg.active.scriptURL.includes('sw-v3.js')) {
+                            reg.unregister();
+                        }
+                    }
+                });
+
                 let refreshing = false;
                 navigator.serviceWorker.addEventListener('controllerchange', function() {
                     if (refreshing) return;
@@ -26,6 +35,7 @@
                 });
             }
         })();
+
     </script>
 
 
