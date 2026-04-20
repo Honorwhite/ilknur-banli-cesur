@@ -16,11 +16,6 @@
     <meta http-equiv="Expires" content="0" />
     <script>
         (function () {
-            var userLang = navigator.language || navigator.userLanguage;
-            if (userLang.startsWith('en') && !localStorage.getItem('lang-selected')) {
-                window.location.href = 'en/index.html';
-            }
-            
             // SW Update Handler
             if ('serviceWorker' in navigator) {
                 // Unregister legacy worker
