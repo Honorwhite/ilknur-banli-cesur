@@ -2,14 +2,23 @@
     "use strict";
 
     function initLanguageSwitcher() {
-        // Sayfa bilgisini ve dili tespit et (Windows yolları için \ kontrolü eklendi)
+        // Sayfa bilgisini ve dili tespit et
         const path = window.location.pathname;
-        const isEn = path.includes('/en/') || path.includes('\\en\\');
-        const currentPage = path.split(/[\\\/]/).pop() || 'index.html';
+        const pathSegments = path.split('/').filter(segment => segment.length > 0);
         
-        // Linkleri ayarla
-        const trLink = isEn ? `../${currentPage}` : currentPage;
-        const enLink = isEn ? currentPage : `en/${currentPage}`;
+        // Dili tespit et: Eğer yol 'en' ile başlıyorsa İngilizcedir
+        const isEn = pathSegments[0] === 'en';
+        
+        // Mevcut sayfa ismini bul (uzantısız ve index değilse)
+        let currentPage = isEn ? pathSegments.slice(1).join('/') : pathSegments.join('/');
+        
+        // Eğer ana sayfadaysak boş kalır, index.html ise temizle
+        if (currentPage === 'index.html' || currentPage === 'index') currentPage = '';
+
+        // Linkleri ayarla (Absolute yollar kullanarak karışıklığı önle)
+        const trLink = '/' + currentPage;
+        const enLink = '/en/' + currentPage;
+
 
         // Switcher HTML şablonu
         const switcherHTML = `
