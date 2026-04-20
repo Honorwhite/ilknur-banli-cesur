@@ -14,29 +14,14 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <script>
-        (function () {
-            // SW Update Handler
-            if ('serviceWorker' in navigator) {
-                // Unregister legacy worker
-                navigator.serviceWorker.getRegistrations().then(regs => {
-                    for (let reg of regs) {
-                        if (reg.active && reg.active.scriptURL.includes('sw.js') && !reg.active.scriptURL.includes('sw-v3.js')) {
-                            reg.unregister();
-                        }
-                    }
-                });
+    <link rel="canonical" href="http://docdrilknurbanlicesur.com/" />
+    <link rel="alternate" hreflang="tr" href="http://docdrilknurbanlicesur.com/" />
+    <link rel="alternate" hreflang="en" href="http://docdrilknurbanlicesur.com/en/" />
+    <link rel="alternate" hreflang="x-default" href="http://docdrilknurbanlicesur.com/" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
-                let refreshing = false;
-                navigator.serviceWorker.addEventListener('controllerchange', function() {
-                    if (refreshing) return;
-                    refreshing = true;
-                    window.location.reload();
-                });
-            }
 
-        })();
-    </script>
+    
 
 
     <!-- Mobile Specific Metas -->
