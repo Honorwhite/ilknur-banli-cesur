@@ -972,7 +972,7 @@
                         <i class="fas fa-location-dot"></i>
                         <span>Konum</span>
                     </a>
-                    <a href="https://wa.me/905325687169" target="_blank" class="nav-item">
+                    <a href="https://wa.me/905325687169?text=Merhaba,%20sitenizden%20ulaşıyorum.%20Tedavilerle%20ilgili%20sorularım%20var.%20Bana%20yardım%20eder%20misiniz?" target="_blank" class="nav-item">
                         <i class="fab fa-whatsapp"></i>
                         <span>WhatsApp</span>
                     </a>
