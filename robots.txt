@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://docdrilknurbanlicesur.com/sitemap.xml
+Sitemap: https://www.docdrilknurbanlicesur.com/sitemap.xml
 
